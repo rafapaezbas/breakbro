@@ -16,14 +16,7 @@ exports.create = async (req, res) => {
 
 exports.init = async (req, res) => {
     const streamer = reqToStreamer(req);
-    var persistedStreamer = await streamerManager.find({name: streamer.name});
-    if(persistedStreamer == undefined){
-        createStreamerFolder(streamer.name);
-        var result = await streamerManager.create(streamer);
-        res.send(result);
-    }else{
-        res.sendStatus(202);
-    }
+    await streamerManager.init(streamer.name);
 };
 
 const reqToStreamer = (req) => {
