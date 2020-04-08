@@ -15,6 +15,7 @@ app.get('/ping',(req, res) => {
 });
 app.post('/file',file.create);
 app.post('/streamer',streamer.create);
+app.post('/streamer/init',streamer.init);
 
 app.listen(80, () => {
 	  console.log("Server started in port 80");

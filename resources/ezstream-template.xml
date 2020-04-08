@@ -15,7 +15,7 @@
     <sourcepassword></sourcepassword>
     <format>MP3</format>
     <playlist_program>1</playlist_program>
-    <filename></filename>
+    <filename>selector.sh</filename>
     <!-- Once done streaming playlist.m3u, exit: -->
     <shuffle>1</shuffle>
     <stream_once>0</stream_once>
