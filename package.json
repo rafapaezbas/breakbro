@@ -16,6 +16,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "formidable": "^1.2.2",
+    "mongodb": "^3.5.5",
     "mv": "^2.1.1"
   }
 }

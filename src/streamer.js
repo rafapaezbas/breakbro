@@ -1,20 +1,17 @@
 const streamerManager = require('./streamer-manager');
+const fileManager = require('./file-manager');
+const config = require('./config');
 
-exports.get = (req, res) => {
-    const streamer = streamerManager.get(id);
-    res.send(streamer);
-};
-
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     const streamer = reqToStreamer(req);
-    const status = streamerManager.create(streamer);
-    res.sendStatus(status);
-};
-
-exports.update = (req, res) => {
-    const streamer = reqToStreamer(req);
-    const status = streamerManager.update(id, streamer);
-    res.sendStatus(status);
+    var persistedStreamer = await streamerManager.find({name: streamer.name});
+    if(persistedStreamer == undefined){
+        createStreamerFolder(streamer.name);
+        var result = await streamerManager.create(streamer);
+        res.send(result);
+    }else{
+        res.sendStatus(202);
+    }
 };
 
 const reqToStreamer = (req) => {
@@ -23,3 +20,8 @@ const reqToStreamer = (req) => {
         info: req.body.info
     };
 };
+
+const createStreamerFolder = (streamerName) => {
+    fileManager.createStreamerFolder(streamerName);
+};
+
