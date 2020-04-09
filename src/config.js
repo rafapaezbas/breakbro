@@ -5,6 +5,7 @@ config = {
     'streamers.path' : '/home/streamers/',
     'master.broadcast.url' : 'http://localhost:38080/',
     'master.broadcast.password' : 'abletonlive99',
+    'encrytion.salt' : '1234567',
 };
 
 exports.get = (key) => {

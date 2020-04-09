@@ -1,0 +1,29 @@
+* Operations
+** Create Streamer Cloud env
+#+begin_src sh
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"name\",\"info\":\"info\"}" http://www.pinkumandrill.com:38080/streamer
+#+end_src
+** Init Streamer Cloud env
+#+begin_src sh
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"name\"}" http://www.pinkumandrill.com:38080/streamer/init
+#+end_src
+** Create Streamer Local env
+#+begin_src sh
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"loca\",\"info\":\"info\",\"password\":\"safepassword\"}" http://localhost:38081/streamer
+#+end_src
+
+#+RESULTS:
+| HTTP/1.1                      | 202                           | Accepted          |               |        |          |     |
+| X-Powered-By:                 | Express                       |                   |               |        |          |     |
+| Access-Control-Allow-Origin:  | *                             |                   |               |        |          |     |
+| Access-Control-Allow-Headers: | Origin,                       | X-Requested-With, | Content-Type, | Accept |          |     |
+| Content-Type:                 | text/plain;                   | charset=utf-8     |               |        |          |     |
+| Content-Length:               | 8                             |                   |               |        |          |     |
+| ETag:                         | 8-YaBXLEiT7zQxEyDYTILfiL6oPhE |                   |               |        |          |     |
+| Date:                         | Thu,                          | 09                | Apr           |   2020 | 20:31:29 | GMT |
+| Connection:                   | keep-alive                    |                   |               |        |          |     |
+| Accepted                      |                               |                   |               |        |          |     |
+
+** Init Streamer Local env
+#+begin_src sh
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"name\"}" http://www.pinkumandrill.com:38080/streamer/init
