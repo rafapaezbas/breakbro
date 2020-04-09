@@ -1,6 +1,6 @@
 var mongoClient = require('mongodb').MongoClient;
 var config = require('./config');
-const spawn = require('child_process');
+const { spawn } = require('child_process');
 
 exports.create = (streamer) => {
     return dbConnection().then(insert(streamer));
@@ -12,7 +12,7 @@ exports.find = (query) => {
 
 exports.init = (streamerName) => {
     const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
-    var subprocess = spawn("ezstream", ["-c", path]);
+    var subprocess = spawn("ezstream",["-c", path]);
     console.log("PID:" + subprocess.pid);
 };
 
