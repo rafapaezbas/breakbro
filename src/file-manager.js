@@ -4,23 +4,17 @@ var fs = require('fs');
 var config = require('./config');
 var move = require('mv');
 
-exports.create = (req) => {
-    var form = new formidable.IncomingForm();
-    form.parse(req, renameFile);
-};
-
 exports.createStreamerFolder = (streamerName) => {
     const path = config.get("streamers.path") + streamerName;
     fs.mkdir(path, createConfig(streamerName));
 };
 
-const renameFile = (err, fields, files) => {
+exports.renameFile = (err, fields, files) => {
     var fileName = files.filetoupload.name;
     var oldPath = files.filetoupload.path;
     var newPath = config.get("file.upload.path") + fileName;
     move(oldPath, newPath, log("Successfull upload: " + fileName));
 };
-
 
 const createConfig = (streamerName) => {
     return (err) => {

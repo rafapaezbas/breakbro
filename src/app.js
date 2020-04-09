@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const file = require('./file');
 const streamer = require('./streamer');
+const login = require('./login');
 
 app.use(express.json())
 app.use(function(req, res, next) {
@@ -14,6 +15,7 @@ app.get('/ping',(req, res) => {
 	  res.sendStatus(200);
 });
 app.post('/file',file.create);
+app.post('/login',login.login);
 app.post('/streamer',streamer.create);
 app.post('/streamer/init',streamer.init);
 

@@ -9,21 +9,37 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"name\"}" htt
 #+end_src
 ** Create Streamer Local env
 #+begin_src sh
-curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"loca\",\"info\":\"info\",\"password\":\"safepassword\"}" http://localhost:38081/streamer
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"rafo\",\"info\":\"info\",\"password\":\"password\"}" http://localhost:38081/streamer
 #+end_src
 
 #+RESULTS:
-| HTTP/1.1                      | 202                           | Accepted          |               |        |          |     |
-| X-Powered-By:                 | Express                       |                   |               |        |          |     |
-| Access-Control-Allow-Origin:  | *                             |                   |               |        |          |     |
-| Access-Control-Allow-Headers: | Origin,                       | X-Requested-With, | Content-Type, | Accept |          |     |
-| Content-Type:                 | text/plain;                   | charset=utf-8     |               |        |          |     |
-| Content-Length:               | 8                             |                   |               |        |          |     |
-| ETag:                         | 8-YaBXLEiT7zQxEyDYTILfiL6oPhE |                   |               |        |          |     |
-| Date:                         | Thu,                          | 09                | Apr           |   2020 | 20:31:29 | GMT |
-| Connection:                   | keep-alive                    |                   |               |        |          |     |
-| Accepted                      |                               |                   |               |        |          |     |
+| HTTP/1.1                                                                                                                                                                                                                                                                                                          | 200                             | OK                |               |        |          |     |
+| X-Powered-By:                                                                                                                                                                                                                                                                                                     | Express                         |                   |               |        |          |     |
+| Access-Control-Allow-Origin:                                                                                                                                                                                                                                                                                      | *                               |                   |               |        |          |     |
+| Access-Control-Allow-Headers:                                                                                                                                                                                                                                                                                     | Origin,                         | X-Requested-With, | Content-Type, | Accept |          |     |
+| Content-Type:                                                                                                                                                                                                                                                                                                     | application/json;               | charset=utf-8     |               |        |          |     |
+| Content-Length:                                                                                                                                                                                                                                                                                                   | 311                             |                   |               |        |          |     |
+| ETag:                                                                                                                                                                                                                                                                                                             | 137-Us0JfmAbMUhdulE/EzvHRrDyWqM |                   |               |        |          |     |
+| Date:                                                                                                                                                                                                                                                                                                             | Thu,                            | 09                | Apr           |   2020 | 22:32:53 | GMT |
+| Connection:                                                                                                                                                                                                                                                                                                       | keep-alive                      |                   |               |        |          |     |
+| result":{"n":1,"ok":1},"connection":{"id":2,"host":"www.pinkumandrill.com","port":27017},"ops":[{"name":"rafo","password":"b2f1c90ee17c629867c7a367bb46f2ea4fdc10c87acf22e15e1c2a197057e6a0","info":"info","_id":"5e8fa295cfa761182a421db4"}],"insertedCount":1,"insertedId":"5e8fa295cfa761182a421db4","n":1,"ok |                                 |                   |               |        |          |     |
 
 ** Init Streamer Local env
 #+begin_src sh
 curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"name\"}" http://www.pinkumandrill.com:38080/streamer/init
+** Login Local env
+#+begin_src sh
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"rafo\",\"info\":\"info\",\"password\":\"password\"}" http://localhost:38081/login
+#+end_src
+
+#+RESULTS:
+| HTTP/1.1                                                                                                                                                      | 200                            | OK                |               |        |          |     |
+| X-Powered-By:                                                                                                                                                 | Express                        |                   |               |        |          |     |
+| Access-Control-Allow-Origin:                                                                                                                                  | *                              |                   |               |        |          |     |
+| Access-Control-Allow-Headers:                                                                                                                                 | Origin,                        | X-Requested-With, | Content-Type, | Accept |          |     |
+| Content-Type:                                                                                                                                                 | application/json;              | charset=utf-8     |               |        |          |     |
+| Content-Length:                                                                                                                                               | 161                            |                   |               |        |          |     |
+| ETag:                                                                                                                                                         | a1-6PDrU/vFcd78KQCm8WIoOaJzj38 |                   |               |        |          |     |
+| Date:                                                                                                                                                         | Thu,                           | 09                | Apr           |   2020 | 22:33:31 | GMT |
+| Connection:                                                                                                                                                   | keep-alive                     |                   |               |        |          |     |
+| token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZm9vYmFyIiwiaWF0IjoxNTg2NDcxNjExLCJleHAiOjE1ODY0NzUyMTF9.pZxM5SFmbLgASSd1f2RyJGaQ3PZec9CJdQJph1aiCJI |                                |                   |               |        |          |     |

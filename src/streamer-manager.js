@@ -1,9 +1,10 @@
 var mongoClient = require('mongodb').MongoClient;
 var config = require('./config');
+var encrytion = require('./encryption');
 const { spawn } = require('child_process');
 
-exports.create = (streamer) => {
-    return dbConnection().then(insert(streamer));
+exports.create = async (streamer) => {
+    return dbConnection().then(insert({name: streamer.name, password: encrytion.getSHA256(streamer.password), info: streamer.info}));
 };
 
 exports.find = (query) => {
