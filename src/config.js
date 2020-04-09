@@ -3,7 +3,7 @@ config = {
     'url.database' : 'mongodb://www.pinkumandrill.com:27017',
     'database.name' : 'breakbro',
     'streamers.path' : '/home/streamers/',
-    'master.broadcast.url' : 'http://localhost:8000/',
+    'master.broadcast.url' : 'http://localhost:38080/',
     'master.broadcast.password' : 'abletonlive99',
 };
 
