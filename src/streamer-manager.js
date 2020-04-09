@@ -12,9 +12,7 @@ exports.find = (query) => {
 
 exports.init = (streamerName) => {
     const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
-    var subprocess = spawn("ezstream -c " + path, (err,stdout,stderr) => {
-        if(err) throw err
-    });
+    var subprocess = spawn("ezstream", ["-c", path]);
     console.log("PID:" + subprocess.pid);
 };
 

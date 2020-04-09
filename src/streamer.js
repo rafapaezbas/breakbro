@@ -14,7 +14,7 @@ exports.create = async (req, res) => {
     }
 };
 
-exports.init = async (req, res) => {
+exports.init = (req, res) => {
     const streamer = reqToStreamer(req);
     streamerManager.init(streamer.name);
 };

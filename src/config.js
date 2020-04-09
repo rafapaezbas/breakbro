@@ -4,7 +4,7 @@ config = {
     'database.name' : 'breakbro',
     'streamers.path' : '/home/streamers/',
     'master.broadcast.url' : 'http://localhost:8000/',
-    'master.broadcast.password' : 'password',
+    'master.broadcast.password' : 'abletonlive99',
 };
 
 exports.get = (key) => {

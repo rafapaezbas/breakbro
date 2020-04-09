@@ -1,4 +1,5 @@
 var formidable = require('formidable');
+const { spawn } = require('child_process');
 var fs = require('fs');
 var config = require('./config');
 var move = require('mv');
@@ -34,23 +35,41 @@ const createConfig = (streamerName) => {
 const createEzConfig = (streamerName) => {
     fs.readFile(__dirname +  "/../resources/ezstream-template.xml", (err, template) => {
         const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
-        var ezConfig = template.toString().split("\n").map(setMountpoint(streamerName)).join("\n");
+        var ezConfig = template.toString().split("\n").map(setMountpoint(streamerName)).map(setCredentials).map(setSelector(streamerName)).join("\n");
         fs.writeFile(path, ezConfig, log("Created " + streamerName + " ez configuration."));
     });
 };
 
 const createMusicFolder = (streamerName) => {
     const path = config.get("streamers.path") + streamerName;
-    fs.mkdir(path + "/music", log("Created music folder for" + streamerName));
+    fs.mkdir(path + "/music", log("Created music folder for " + streamerName));
 };
 
 const createSelector = (streamerName) => {
     fs.readFile(__dirname +  "/../resources/selector-template.sh", (err, template) => {
         const path = config.get("streamers.path") + streamerName + "/selector.sh";
-        var selector = template.toString();
-        fs.writeFile(path, selector, log("Created " + streamerName + " selector."));
+        var selector = template.toString().split("\n").map(setPath(streamerName)).join("\n");
+        fs.writeFile(path, selector, giveExcutablePermissions(streamerName));
     });
 };
+
+const setPath = (streamerName) => {
+    return (e) => {
+        const streamerFolder = config.get("streamers.path") + streamerName;
+        const playlistPath = streamerFolder + "/playlist";
+        const musicPath = streamerFolder + "/music/*";
+        const infoPath = streamerFolder + "/info.json";
+        return e.replace("#playlistpath#", playlistPath).replace("#musicpath#",musicPath).replace("#infopath#",infoPath);
+    };
+}
+
+const giveExcutablePermissions = (streamerName) => {
+    return (err) => {
+        if (err) throw err;
+        const path = config.get("streamers.path") + streamerName + "/selector.sh";
+        spawn("chmod", ["+x", path]);
+    };
+}
 
 const createPlaylist = (streamerName) => {
     const path = config.get("streamers.path") + streamerName + "/playlist";
@@ -61,6 +80,13 @@ const setMountpoint = (streamerName) => {
     return (e) => {
         const master = config.get("master.broadcast.url");
         return e.replace("<url></url>","<url>" + master + streamerName + "</url>");
+    };
+}
+
+const setSelector = (streamerName) => {
+    return (e) => {
+        const selectorPath = config.get("streamers.path") + streamerName + "/selector.sh";
+        return e.replace("<filename></filename>","<filename>" + selectorPath + "</filename>");
     };
 }
 
