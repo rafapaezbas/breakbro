@@ -1,4 +1,3 @@
-var formidable = require('formidable');
 const { spawn } = require('child_process');
 var fs = require('fs');
 var config = require('./config');
@@ -9,11 +8,13 @@ exports.createStreamerFolder = (streamerName) => {
     fs.mkdir(path, createConfig(streamerName));
 };
 
-exports.renameFile = (err, fields, files) => {
-    var fileName = files.filetoupload.name;
-    var oldPath = files.filetoupload.path;
-    var newPath = config.get("file.upload.path") + fileName;
-    move(oldPath, newPath, log("Successfull upload: " + fileName));
+exports.moveFile = (streamerName) => {
+    return (err, fields, files) => {
+        var fileName = files.filetoupload.name;
+        var oldPath = files.filetoupload.path;
+        var newPath = config.get("file.upload.path") + streamerName + "/music/" + fileName;
+        move(oldPath, newPath, log("Successfull upload: " + fileName));
+    };
 };
 
 const createConfig = (streamerName) => {

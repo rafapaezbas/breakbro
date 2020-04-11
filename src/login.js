@@ -26,6 +26,6 @@ const isValid = (streamer) => {
 
 const generateToken = (streamerName) => {
     const signSecret = config.get('jwt.sign.secret');
-    const token = jwt.sign({sub: streamer.name}, signSecret, { expiresIn: 60 * 60 });
+    const token = jwt.sign({sub: streamerName}, signSecret, { expiresIn: 60 * 60 });
     return token;
 }

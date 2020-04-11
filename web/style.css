@@ -1,0 +1,76 @@
+* {
+    background-color: #343434;
+    font-family: 'Noto Sans HK', sans-serif;
+    font-family: 'Maven Pro', sans-serif;
+    color: #ffffff;
+}
+body{
+    padding-left:2vw;
+    padding-right:2vw;
+}
+
+#header{
+    height:10vh;
+    padding-top:5vh;
+    margin-bottom:0px;
+}
+
+#header h1{
+    color: #343434;
+    background-color: #ffffff;
+    font-weight: 900;
+}
+
+#featured{
+    margin-top:1px;
+    height:40vh;
+    display:block;
+    margin-bottom:10vh;
+    margin-bottom:5vh;
+}
+
+#featured h2{
+    margin-top:2vh;
+}
+
+#featured p{
+    width:70vw;
+    margin:auto;
+    text-align: justify;
+    text-justify: auto;
+    margin-bottom:4vh;
+}
+
+#streamer-name{
+    color: #343434;
+    background-color: #ffffff;
+    padding-top:2vh;
+    padding-bottom:1vh;
+    font-weight: 900;
+}
+
+#navbar{
+    height:30vh;
+}
+
+ul{
+    margin-top:0px;
+    list-style-type: none;
+    padding-left: 0;
+    font-size:120%;
+}
+
+li{
+    margin-top:2vh;
+}
+
+#streamer-controls h3{
+    text-align:right;
+    margin-top:7px;
+    margin-bottom:7px;
+    margin-right:2vw;
+}
+
+#listen{
+    font-weight: 900;
+}

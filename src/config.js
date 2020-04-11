@@ -1,5 +1,5 @@
 config = {
-    'file.upload.path' : '/home/',
+    'file.upload.path' : '/home/streamers/',
     'url.database' : 'mongodb://www.pinkumandrill.com:27017',
     'database.name' : 'breakbro',
     'streamers.path' : '/home/streamers/',
