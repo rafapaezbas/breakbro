@@ -4,6 +4,7 @@
     font-family: 'Maven Pro', sans-serif;
     color: #ffffff;
 }
+
 body{
     padding-left:2vw;
     padding-right:2vw;
@@ -26,7 +27,7 @@ body{
     height:40vh;
     display:block;
     margin-bottom:10vh;
-    margin-bottom:5vh;
+    margin-bottom:15vh;
 }
 
 #featured h2{
@@ -73,4 +74,35 @@ li{
 
 #listen{
     font-weight: 900;
+}
+
+input {
+    border: 0px;
+    border-bottom: 3px solid #ffffff;
+    padding-bottom: 10px;
+}
+
+button {
+    border: 0px;
+    color: #343434;
+    background-color: #ffffff;
+}
+
+#login-button, #signup-button {
+    font-size: 125%;
+    font-weight: 900;
+    padding: 5px;
+    margin-top: 6vh;
+}
+
+#login {
+    width:70vw;
+    height:50vh;
+    margin:auto;
+    margin-top: 5vh;
+}
+
+#login input {
+    width:100%;
+    margin:auto;
 }
