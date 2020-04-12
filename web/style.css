@@ -34,7 +34,7 @@ body{
     margin-top:2vh;
 }
 
-#featured p{
+#featured h5{
     width:70vw;
     margin:auto;
     text-align: justify;
@@ -88,16 +88,25 @@ button {
     background-color: #ffffff;
 }
 
-#login-button, #signup-button {
+#login-button, #signup-button, #send-file-button, #file-upload-label {
     font-size: 125%;
     font-weight: 900;
     padding: 5px;
     margin-top: 6vh;
 }
 
+#send-file-button{
+    margin-top: 2vh;
+}
+
+#file-upload-label{
+    margin-top:10vh;
+    border: 3px solid #ffffff;
+}
+
 #login {
     width:70vw;
-    height:50vh;
+    height:48vh;
     margin:auto;
     margin-top: 5vh;
 }
@@ -105,4 +114,25 @@ button {
 #login input {
     width:100%;
     margin:auto;
+}
+
+#file-upload {
+	  width: 0.1px;
+	  height: 0.1px;
+	  opacity: 0;
+	  overflow: hidden;
+	  z-index: -1;
+    margin-top:5vh;
+    margin-bottom:2vh;
+}
+
+#stream-info{
+    display: block;
+}
+
+#info-text{
+    padding: 15px;
+    border: 3px solid #ffffff;
+    width: 90vw;
+    height: 15vh;
 }

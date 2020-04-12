@@ -1,9 +1,39 @@
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
-        <script src="index.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="file.js"></script>
+        <title>Breakbro</title>
     </head>
     <body>
-        <input type="file" id="file1"><br>
-        <button id="send-file-button">Send file</button>
+        <div id="header">
+            <h1>Breakbro</h1>
+        </div>
+        <div id="stream-info">
+            <h3>Streamer name</h3>
+            <h4>Streamer status: Playing </h4>
+            <h4>Description</h4>
+            <textarea id="info-text"></textarea>
+        </div>
+        <label id="file-upload-label" for="file-upload">Add file to collection</label>
+        <input type="file" id="file-upload"><br>
+        <div id="files-list">
+            <h4>file-1.mp3</h4>
+            <h4>file-2.mp3</h4>
+            <h4>file-3.mp3</h4>
+            <h4>file-4.mp3</h4>
+            <h4>file-5.mp3</h4>
+        </div>
+        <hr/>
     </body>
+    <div id="navbar">
+        <ul>
+            <li><a href=""><i class="fa fa-search" aria-hidden="true"></i> search</a></li>
+            <li><a href=""><i class="fa fa-folder-o" aria-hidden="true"></i> manage collection</a></li>
+            <li><a href="login.html"><i class="fa fa-user-circle" aria-hidden="true"></i> signup / login</a></li>
+            <li><a href=""><i class="fa fa-hand-spock-o" aria-hidden="true"></i> about</a></li>
+        </ul>
+    </div>
 </html>

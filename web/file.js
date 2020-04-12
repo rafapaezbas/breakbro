@@ -1,4 +1,7 @@
 window.onload = () => {
+
+    setStreamerInfo(document.cookie);
+
     document.getElementById("send-file-button").onclick = () => {
         const file = document.getElementById("file1").files[0];
         const formData = new FormData();
@@ -18,4 +21,14 @@ window.onload = () => {
             return undefined;
         }
     };
+
+    const setStreamerInfo = () => {
+        if(document.cookie == undefined){
+            return;
+        }else{
+            fetch('http://localhost:38081/streamer/getInfo',
+                  {method: "POST", headers: headers, body: JSON.stringify(body)}).then(res=>res.json()).then(successLogin,errorLogin);
+        }
+    };
+
 };
