@@ -88,7 +88,7 @@ button {
     background-color: #ffffff;
 }
 
-#login-button, #signup-button, #send-file-button, #file-upload-label {
+#login-button, #signup-button, #send-file-button, #file-upload-label, #start-stream-button {
     font-size: 125%;
     font-weight: 900;
     padding: 5px;

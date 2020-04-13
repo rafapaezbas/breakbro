@@ -5,7 +5,7 @@ window.onload = () => {
         const password = document.getElementById("password").value;
         var body = {name: name, password: password};
         const headers = { 'Accept': 'application/json, text/plain, */*', 'Content-Type': 'application/json' };
-        fetch('http://localhost:38081/login', {method: "POST", headers: headers, body: JSON.stringify(body)}).then(res=>res.json()).then(successLogin,errorLogin);
+        fetch('http://www.pinkumadrill.com:38081/login', {method: "POST", headers: headers, body: JSON.stringify(body)}).then(res=>res.json()).then(successLogin,errorLogin);
     };
 
     document.getElementById("signup-button").onclick = () => {
@@ -13,7 +13,7 @@ window.onload = () => {
         const password = document.getElementById("password").value;
         var body = {name: name, password: password};
         const headers = { 'Accept': 'application/json, text/plain, */*', 'Content-Type': 'application/json' };
-        fetch('http://localhost:38081/streamer', {method: "POST", headers: headers, body: JSON.stringify(body)}).then(res=>res.json()).then(successLogin,errorLogin);
+        fetch('http://www.pinkumadrill.com:38081/streamer', {method: "POST", headers: headers, body: JSON.stringify(body)}).then(res=>res.json()).then(successLogin,errorLogin);
     };
 
     const successLogin = (response) => {

@@ -1,11 +1,10 @@
 const streamerManager = require('./streamer-manager');
 const fileManager = require('./file-manager');
 const config = require('./config');
+const jwt = require('./jwt');
 
 exports.create = async (req, res) => {
-
     const streamer = reqToStreamer(req);
-
     if(!isValid(streamer) || await streamerManager.find({name: streamer.name}) != undefined){ //If there are missing fields or streamer already exists.
         res.sendStatus(202);
     }else{
@@ -16,9 +15,13 @@ exports.create = async (req, res) => {
 };
 
 exports.init = (req, res) => {
-    const streamer = reqToStreamer(req);
-    streamerManager.init(streamer.name);
-    res.sendStatus(200);
+    const streamerName = jwt.validAuth(req);
+    if(streamerName == undefined){
+        res.sendStatus(403);
+    }else{
+        streamerManager.init(streamerName);
+        res.sendStatus(200);
+    }
 };
 
 const reqToStreamer = (req) => {
