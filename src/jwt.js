@@ -1,4 +1,5 @@
 const jwt  = require('jsonwebtoken');
+const config  = require('./config');
 
 exports.validAuth = (req) => {
     if(req.headers == undefined || req.headers.authorization == undefined || req.headers.authorization.split(" ")[1] == undefined){
