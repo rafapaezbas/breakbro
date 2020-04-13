@@ -17,7 +17,7 @@ window.onload = () => {
     };
 
     const successLogin = (response) => {
-        storeTokenAsCookie(response.body);
+        storeTokenAsCookie(response.token);
         window.location = "file:///home/breakbro/web/index.html";
     };
 

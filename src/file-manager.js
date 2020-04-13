@@ -2,6 +2,7 @@ const { spawn } = require('child_process');
 var fs = require('fs');
 var config = require('./config');
 var move = require('mv');
+const { promisify } = require('util');
 
 exports.createStreamerFolder = (streamerName) => {
     const path = config.get("streamers.path") + streamerName;
@@ -15,6 +16,12 @@ exports.moveFile = (streamerName) => {
         var newPath = config.get("file.upload.path") + streamerName + "/music/" + fileName;
         move(oldPath, newPath, log("Successfull upload: " + fileName));
     };
+};
+
+exports.readFiles = (streamerName) => {
+    const path = config.get("streamers.path") + streamerName + "/music";
+    const readdir = promisify(fs.readdir);
+    return readdir(path);
 };
 
 const createConfig = (streamerName) => {

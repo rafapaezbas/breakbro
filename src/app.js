@@ -15,6 +15,7 @@ app.get('/ping',(req, res) => {
 	  res.sendStatus(200);
 });
 app.post('/file',file.create);
+app.get('/file',file.list);
 app.post('/login',login.login);
 app.post('/streamer',streamer.create);
 app.post('/streamer/init',streamer.init);

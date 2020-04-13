@@ -15,6 +15,16 @@ exports.create = function(req, res){
     }
 };
 
+exports.list = function(req,res){
+    const streamerName = validAuth(req);
+    console.log(streamerName);
+    if(streamerName == undefined){
+        res.sendStatus(403);
+    }else{
+        fileManager.readFiles(streamerName).then(files => res.send(files));
+    }
+}
+
 const validAuth = (req) => {
     if(req.headers == undefined || req.headers.authorization == undefined || req.headers.authorization.split(" ")[1] == undefined){
         return undefined;
