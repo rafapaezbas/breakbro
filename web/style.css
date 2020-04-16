@@ -16,10 +16,16 @@ body{
     margin-bottom:0px;
 }
 
-#header h1{
+h1{
     color: #343434;
     background-color: #ffffff;
     font-weight: 900;
+}
+
+#featured-header{
+    font-size:250%;
+    margin-bottom: 1vh;
+    padding:2vh;
 }
 
 #featured{
@@ -28,30 +34,36 @@ body{
     display:block;
     margin-bottom:10vh;
     margin-bottom:15vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-#featured h2{
-    margin-top:2vh;
+.streamer {
+    width:50%;
+    height: 40vh;
 }
 
-#featured h5{
-    width:70vw;
-    margin:auto;
-    text-align: justify;
-    text-justify: auto;
-    margin-bottom:4vh;
-}
 
-#streamer-name{
+.streamer-name{
     color: #343434;
     background-color: #ffffff;
-    padding-top:2vh;
-    padding-bottom:1vh;
+    padding:2vh;
     font-weight: 900;
+    font-size:200%;
+    margin-top:1vh;
 }
 
-#navbar{
-    height:30vh;
+.streamer-description{
+    height:30%;
+    font-size:125%;
+    padding-left:2vh;
+    font-weight: 600;
+}
+
+#navbar {
+    text-align: right;
+    margin-top:2vh;
 }
 
 ul{
@@ -63,9 +75,11 @@ ul{
 
 li{
     margin-top:2vh;
+    display: inline;
+    margin-left:10px;
 }
 
-#streamer-controls h3{
+.streamer-controls {
     text-align:right;
     margin-top:7px;
     margin-bottom:7px;
@@ -105,10 +119,10 @@ button {
 }
 
 #login {
-    width:70vw;
+    width:50vw;
     height:48vh;
     margin:auto;
-    margin-top: 5vh;
+    margin-top: 25vh;
 }
 
 #login input {
