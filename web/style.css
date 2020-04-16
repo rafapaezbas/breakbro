@@ -17,8 +17,7 @@ body{
 }
 
 h1{
-    color: #343434;
-    background-color: #ffffff;
+    color: #ffffff;
     font-weight: 900;
 }
 
@@ -40,7 +39,8 @@ h1{
 }
 
 .streamer {
-    width:50%;
+    width:49%;
+    margin:auto;
     height: 40vh;
 }
 
@@ -115,7 +115,12 @@ button {
 
 #file-upload-label{
     margin-top:10vh;
-    border: 3px solid #ffffff;
+    border: 1px solid #ffffff;
+    font-weight: 900;
+}
+
+#start-stream-button{
+    margin-top: 3vh;
 }
 
 #login {
@@ -149,4 +154,26 @@ button {
     border: 3px solid #ffffff;
     width: 90vw;
     height: 15vh;
+}
+
+.streamer-collection-name{
+    display:inline;
+    margin-right: 2vw;
+}
+
+
+@media only screen and (max-width: 600px) {
+    li{
+        display:block;
+        margin-top:2vh;
+    }
+
+    .streamer{
+        width:100%;
+    }
+
+    #login {
+        margin-top:10vh;
+        width: 75%;
+    }
 }
