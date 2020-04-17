@@ -12,8 +12,9 @@ exports.findByName = (name) => {
 };
 
 exports.findBySearchKey = (searchKey) => {
-    const regex = new Regex('/.*' + searchKey + '.*/');
-    return dbConnection().then(get( { $or: [ {name: regex}, {info: regex} ] } ));
+    const regex = { $regex : new RegExp('.*' + searchKey + '.*')}; // This is equals to SQL LIKE '%_%'
+    const query = { $or: [{name: regex},{info: regex}]};
+    return dbConnection().then(get(query)).then(cursor => cursor.toArray());
 };
 
 exports.init = (streamerName) => {
