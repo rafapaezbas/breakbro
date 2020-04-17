@@ -30,7 +30,7 @@ exports.search = async (req, res) => {
         res.sendStatus(404);
     }else{
         var result = await streamerManager.findBySearchKey(searchKey);
-	var filteredResult = result.map(e => ({name: e.name, info: e.info}) ); //Remove password and ids for response
+        var filteredResult = result.map(e => ({name: e.name, info: e.info}) ); //Remove password and ids for response
         res.send(filteredResult);
     }
 };

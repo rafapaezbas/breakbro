@@ -50,6 +50,23 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"rafo\",\"inf
 | Connection:                                                                                                                                                   | keep-alive                     |                   |               |        |          |     |
 | token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZm9vYmFyIiwiaWF0IjoxNTg2NDcxNjExLCJleHAiOjE1ODY0NzUyMTF9.pZxM5SFmbLgASSd1f2RyJGaQ3PZec9CJdQJph1aiCJI |                                |                   |               |        |          |     |
 
+** Search Cloud env
+#+begin_src sh
+curl -i -X POST -H "Content-Type: application/json" -d "{\"searchKey\":\"a\"}" http://www.pinkumandrill.com:38081/streamer/search
+#+end_src
+
+#+RESULTS:
+| HTTP/1.1                                                                                                       | 200                            | OK                |               |         |               |     |
+| X-Powered-By:                                                                                                  | Express                        |                   |               |         |               |     |
+| Access-Control-Allow-Origin:                                                                                   | *                              |                   |               |         |               |     |
+| Access-Control-Allow-Headers:                                                                                  | Origin,                        | X-Requested-With, | Content-Type, | Accept, | Authorization |     |
+| Content-Type:                                                                                                  | application/json;              | charset=utf-8     |               |         |               |     |
+| Content-Length:                                                                                                | 121                            |                   |               |         |               |     |
+| ETag:                                                                                                          | 79-T0PHnI/dPNJUANLYeBiiFtn8aQg |                   |               |         |               |     |
+| Date:                                                                                                          | Fri,                           | 17                | Apr           |    2020 |      20:15:51 | GMT |
+| Connection:                                                                                                    | keep-alive                     |                   |               |         |               |     |
+| name":"hyena2","info":"info"},{"name":"admin","info":null},{"name":"aphex","info":null},{"name":"square","info |                                |                   |               |         |               |     |
+
 * TO-DO
 - Add Prometheus endpoints
 - Add nginx reverse proxy with ssl certificate (lets encrypt for free certificate)
