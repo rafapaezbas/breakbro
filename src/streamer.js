@@ -5,7 +5,7 @@ const jwt = require('./jwt');
 
 exports.create = async (req, res) => {
     const streamer = reqToStreamer(req);
-    if(!isValid(streamer) || await streamerManager.find({name: streamer.name}) != undefined){ //If there are missing fields or streamer already exists.
+    if(!isValid(streamer) || await streamerManager.findByName(streamer.name) != undefined){ //If there are missing fields or streamer already exists.
         res.sendStatus(202);
     }else{
         var result = await streamerManager.create(streamer);
@@ -21,6 +21,16 @@ exports.init = (req, res) => {
     }else{
         streamerManager.init(streamerName);
         res.sendStatus(200);
+    }
+};
+
+exports.search = async (req, res) => {
+    const searchKey = req.body.searchKey;
+    if(searchKey == undefined){
+        res.sendStatus(404);
+    }else{
+        var result = await streamerManager.findBySearchKey(searchKey);
+        res.sendStatus(result);
     }
 };
 

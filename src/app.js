@@ -19,6 +19,7 @@ app.get('/file',file.list);
 app.post('/login',login.login);
 app.post('/streamer',streamer.create);
 app.get('/streamer/init',streamer.init);
+app.post('/streamer/search',streamer.search);
 
 app.listen(38081, () => {
 	  console.log("Server started in port 38081");

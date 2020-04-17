@@ -7,8 +7,13 @@ exports.create = async (streamer) => {
     return dbConnection().then(insert({name: streamer.name, password: encrytion.getSHA256(streamer.password), info: streamer.info}));
 };
 
-exports.find = (query) => {
-    return dbConnection().then(get(query));
+exports.findByName = (name) => {
+    return dbConnection().then(getOne({name: name}));
+};
+
+exports.findBySearchKey = (searchKey) => {
+    const regex = new Regex('/.*' + searchKey + '.*/');
+    return dbConnection().then(get( { $or: [ {name: regex}, {info: regex} ] } ));
 };
 
 exports.init = (streamerName) => {
@@ -17,10 +22,17 @@ exports.init = (streamerName) => {
     console.log("PID:" + subprocess.pid);
 };
 
-const get = (query) => {
+const getOne = (query) => {
     return (client) => {
         var db = client.db('breakbro');
         return db.collection("streamers").findOne(query);
+    };
+};
+
+const get = (query) => {
+    return (client) => {
+        var db = client.db('breakbro');
+        return db.collection("streamers").find(query);
     };
 };
 
