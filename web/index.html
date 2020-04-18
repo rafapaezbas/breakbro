@@ -1,6 +1,7 @@
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
+        <script src="index.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -15,9 +16,9 @@
             </ul>
         </div>
         <div class="main-header">
-        <h1>Featured</h1>
-        <h1>Random</h1>
-        <h1>Search</h1>
+        <h1 id="item-featured">Featured</h1>
+        <h1 id="item-random">Random</h1>
+        <h1 id="item-search">Search:</h1>
         </div>
         <div id="featured">
             <div class="streamer">
@@ -49,5 +50,6 @@
                 </div>
             </div>
         </div>
+        <input type="text" id="search-text">
     </body>
 </html>

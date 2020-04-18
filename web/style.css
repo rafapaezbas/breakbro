@@ -135,7 +135,7 @@ button {
     margin:auto;
 }
 
-#file-upload {
+#file-upload, #search-text {
 	  width: 0.1px;
 	  height: 0.1px;
 	  opacity: 0;
@@ -166,6 +166,11 @@ button {
     margin-right: 0px;
     margin-left: 0px;
     font-size:200%;
+    color: grey;
+}
+
+#item-featured{
+    color:#ffffff;
 }
 
 
