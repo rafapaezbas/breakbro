@@ -71,13 +71,13 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"searchKey\":\"a\"}" h
 - Add Prometheus endpoints
 - Add nginx reverse proxy with ssl certificate (lets encrypt for free certificate)
 - Add endpoint for featured
-- Add endpoint for search
+- Add endpoint for search DONE
 - Add "playing now" endpoint
 - Add delete streamer
 - Add stop streamer button
 - Add load balancing mechanism for streamers and master
-- Change index h1 for darker headers not selected
-- Implement search on index
+- Change index h1 for darker headers not selected DONE
+- Implement search on index DONE
 - Implement random on index
 - Implement featured on index
 - Check if font can be combined for streamers info

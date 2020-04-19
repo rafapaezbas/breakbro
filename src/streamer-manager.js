@@ -11,6 +11,10 @@ exports.findByName = (name) => {
     return dbConnection().then(getOne({name: name}));
 };
 
+exports.findByNameAndPassword = (name,password) => {
+    return dbConnection().then(getOne({name: name,password : password}));
+};
+
 exports.findBySearchKey = (searchKey) => {
     const regex = { $regex : new RegExp('.*' + searchKey + '.*')}; // This is equals to SQL LIKE '%_%'
     const query = { $or: [{name: regex},{info: regex}]};

@@ -5,8 +5,7 @@ const jwt  = require('jsonwebtoken');
 
 exports.login = async (req, res) => {
     const streamer = reqToStreamer(req);
-	console.log(streamer);
-    if(!isValid(streamer) || await streamerManager.find(streamer) != undefined){
+    if(!isValid(streamer) || await streamerManager.findByNameAndPassword(streamer.name, streamer.password) != undefined){
         const token = generateToken(streamer.name);
         res.send({token: token});
     }else{

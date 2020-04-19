@@ -40,10 +40,12 @@ h1{
 
 .streamer {
     width:49%;
-    margin:auto;
     height: 40vh;
 }
 
+.streamer:nth-child(odd) {
+    margin-right:2%;
+}
 
 .streamer-name{
     color: #343434;
