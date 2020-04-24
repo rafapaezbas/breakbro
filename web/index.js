@@ -61,7 +61,7 @@ window.onload = () => {
     };
 
     const updatePlayer = (streamer) => {
-        const player = document.getElementsById("player");
+        const player = document.getElementById("player");
         player.setAttribute("src", "http://www.pinkumandrill.com:38080/" + streamer.name);
         player.play();
     };

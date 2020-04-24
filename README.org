@@ -68,25 +68,26 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"searchKey\":\"a\"}" h
 | name":"hyena2","info":"info"},{"name":"admin","info":null},{"name":"aphex","info":null},{"name":"square","info |                                |                   |               |         |               |     |
 
 * TO-DO
-- Add Prometheus endpoints
-- Add nginx reverse proxy with ssl certificate (lets encrypt for free certificate)
-- Add endpoint for featured
+- Add Prometheus endpoints 3
+- Add nginx reverse proxy with ssl certificate (lets encrypt for free certificate) 5
+- Add endpoint for featured 3  
 - Add endpoint for search DONE
-- Add "playing now" endpoint
-- Add delete streamer
-- Add stop streamer button
-- Add load balancing mechanism for streamers and master
+- Add "playing now" endpoint 5
+- Add delete streamer 5
+- Add stop streamer button 3
+- Add load balancing mechanism for streamers and master - Needs micro services
 - Change index h1 for darker headers not selected DONE
-- Implement search on index DONE
-- Implement random on index
-- Implement featured on index
-- Check if font can be combined for streamers info
-- Make bigger "password" and "user" on login and signup
-- Add description to signup
+- Implement search on index DONE 
+- Implement random on index 4
+- Implement featured on index 4
+- Check if font can be combined for streamers info 5
+- Make bigger "password" and "user" on login and signup 5
+- Add description to signup 4
 - Add search screen DONE
-- Add player to index
+- Add player to index DONE
 - Change index page DONE
-- Change manage collection page
-- Create docker files
-- Split microservices
-- Remove search of navbar
+- Change manage collection page 5
+- Create docker files 3 - Needs microservices
+- Split microservices 5
+- Remove search of navbar DONE
+- create newman tests
