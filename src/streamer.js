@@ -6,7 +6,7 @@ const jwt = require('./jwt');
 exports.create = async (req, res) => {
     const streamer = reqToStreamer(req);
     if(!isValid(streamer) || await streamerManager.findByName(streamer.name) != undefined){ //If there are missing fields or streamer already exists.
-        res.sendStatus(202);
+        res.sendStatus(400);
     }else{
         var result = await streamerManager.create(streamer);
         createStreamerFolder(streamer.name);
@@ -48,6 +48,6 @@ const createStreamerFolder = (streamerName) => {
 };
 
 const isValid = (streamer) => {
-    return streamer.name != undefined && streamer.password != undefined;
+    return streamer.name != undefined && streamer.name.length > 0 && streamer.password != undefined && streamer.password.length > 0;
 };
 
