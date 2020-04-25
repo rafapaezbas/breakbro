@@ -1,27 +1,10 @@
-const { spawn } = require('child_process');
-var fs = require('fs');
 var config = require('./config');
-var move = require('mv');
-const { promisify } = require('util');
+var fs = require('fs');
+const { spawn } = require('child_process');
 
-exports.createStreamerFolder = (streamerName) => {
-    const path = config.get("streamers.path") + streamerName;
-    fs.mkdir(path, createConfig(streamerName));
-};
-
-exports.moveFile = (streamerName) => {
-    return (err, fields, files) => {
-        var fileName = files.filetoupload.name;
-        var oldPath = files.filetoupload.path;
-        var newPath = config.get("file.upload.path") + streamerName + "/music/" + fileName;
-        move(oldPath, newPath, log("Successfull upload: " + fileName));
-    };
-};
-
-exports.readFiles = (streamerName) => {
-    const path = config.get("streamers.path") + streamerName + "/music";
-    const readdir = promisify(fs.readdir);
-    return readdir(path);
+exports.create = (streamerName) => {
+        const path = config.get("streamers.path") + streamerName;
+        fs.mkdir(path, createConfig(streamerName));
 };
 
 const createConfig = (streamerName) => {
@@ -35,7 +18,8 @@ const createConfig = (streamerName) => {
 };
 
 const createEzConfig = (streamerName) => {
-    fs.readFile(__dirname +  "/../resources/ezstream-template.xml", (err, template) => {
+    fs.readFile(__dirname +  "/../../resources/ezstream-template.xml", (err, template) => {
+        if(err) console.log(err);
         const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
         var ezConfig = template.toString().split("\n").map(setMountpoint(streamerName)).map(setCredentials).map(setSelector(streamerName)).join("\n");
         fs.writeFile(path, ezConfig, log("Created " + streamerName + " ez configuration."));
@@ -48,7 +32,7 @@ const createMusicFolder = (streamerName) => {
 };
 
 const createSelector = (streamerName) => {
-    fs.readFile(__dirname +  "/../resources/selector-template.sh", (err, template) => {
+    fs.readFile(__dirname +  "/../../resources/selector-template.sh", (err, template) => {
         const path = config.get("streamers.path") + streamerName + "/selector.sh";
         var selector = template.toString().split("\n").map(setPath(streamerName)).join("\n");
         fs.writeFile(path, selector, giveExcutablePermissions(streamerName));
@@ -63,7 +47,7 @@ const setPath = (streamerName) => {
         const infoPath = streamerFolder + "/info.json";
         return e.replace("#playlistpath#", playlistPath).replace("#musicpath#",musicPath).replace("#infopath#",infoPath);
     };
-}
+};
 
 const giveExcutablePermissions = (streamerName) => {
     return (err) => {
@@ -71,7 +55,7 @@ const giveExcutablePermissions = (streamerName) => {
         const path = config.get("streamers.path") + streamerName + "/selector.sh";
         spawn("chmod", ["+x", path]);
     };
-}
+};
 
 const createPlaylist = (streamerName) => {
     const path = config.get("streamers.path") + streamerName + "/playlist";
@@ -83,19 +67,19 @@ const setMountpoint = (streamerName) => {
         const master = config.get("master.broadcast.url");
         return e.replace("<url></url>","<url>" + master + streamerName + "</url>");
     };
-}
+};
 
 const setSelector = (streamerName) => {
     return (e) => {
         const selectorPath = config.get("streamers.path") + streamerName + "/selector.sh";
         return e.replace("<filename></filename>","<filename>" + selectorPath + "</filename>");
     };
-}
+};
 
 const setCredentials = (e) => {
     const password = config.get("master.broadcast.password");
     return e.replace("<sourcepassword></sourcepassword>","<sourcepassword>" + password + "</sourcepassword>");
-}
+};
 
 var log = (msg) => {
     return  (err) => {

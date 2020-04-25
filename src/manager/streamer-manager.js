@@ -1,10 +1,12 @@
-var mongoClient = require('mongodb').MongoClient;
-var config = require('./config');
-var encrytion = require('./encryption');
+const mongoClient = require('mongodb').MongoClient;
+const config = require('./config');
+const encrytion = require('./encryption');
 const { spawn } = require('child_process');
+const axios = require('axios');
+
 
 exports.create = async (streamer) => {
-    return dbConnection().then(insert({name: streamer.name, password: encrytion.getSHA256(streamer.password), info: streamer.info}));
+    return axios.get('http://localhost:38082/streamer?name=' + streamer.name);
 };
 
 exports.findByName = (name) => {

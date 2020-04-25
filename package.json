@@ -14,10 +14,12 @@
   "author": "rpaezbas",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "formidable": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.5",
-    "mv": "^2.1.1"
+    "mv": "^2.1.1",
+    "promisify": "0.0.3"
   }
 }

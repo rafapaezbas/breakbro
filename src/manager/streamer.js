@@ -8,9 +8,7 @@ exports.create = async (req, res) => {
     if(!isValid(streamer) || await streamerManager.findByName(streamer.name) != undefined){ //If there are missing fields or streamer already exists.
         res.sendStatus(400);
     }else{
-        var result = await streamerManager.create(streamer);
-        createStreamerFolder(streamer.name);
-        res.send(result);
+        streamerManager.create(streamer).then(successfullRequest(res),failedRequest(res));
     }
 };
 
@@ -43,11 +41,21 @@ const reqToStreamer = (req) => {
     };
 };
 
-const createStreamerFolder = (streamerName) => {
-    fileManager.createStreamerFolder(streamerName);
-};
 
 const isValid = (streamer) => {
     return streamer.name != undefined && streamer.name.length > 0 && streamer.password != undefined && streamer.password.length > 0;
 };
 
+const successfullRequest = (res) => {
+    return (result) => {
+        console.log("success");
+        res.sendStatus(200);
+    };
+};
+
+const failedRequest = (res) => {
+    return (result) => {
+        console.log(result);
+        res.sendStatus(503);
+    };
+};
