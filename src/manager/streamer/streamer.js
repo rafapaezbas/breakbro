@@ -47,14 +47,12 @@ const isValid = (streamer) => {
 
 const successfullRequest = (res) => {
     return (result) => {
-        console.log("success");
         res.sendStatus(200);
     };
 };
 
 const failedRequest = (res) => {
     return (result) => {
-        console.log(result);
         res.sendStatus(503);
     };
 };

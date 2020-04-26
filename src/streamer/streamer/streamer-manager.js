@@ -18,7 +18,7 @@ const createConfig = (streamerName) => {
 };
 
 const createEzConfig = (streamerName) => {
-    fs.readFile(__dirname +  "/../../resources/ezstream-template.xml", (err, template) => {
+    fs.readFile(__dirname +  "/../resources/ezstream-template.xml", (err, template) => {
         if(err) console.log(err);
         const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
         var ezConfig = template.toString().split("\n").map(setMountpoint(streamerName)).map(setCredentials).map(setSelector(streamerName)).join("\n");
@@ -32,7 +32,7 @@ const createMusicFolder = (streamerName) => {
 };
 
 const createSelector = (streamerName) => {
-    fs.readFile(__dirname +  "/../../resources/selector-template.sh", (err, template) => {
+    fs.readFile(__dirname +  "/../resources/selector-template.sh", (err, template) => {
         const path = config.get("streamers.path") + streamerName + "/selector.sh";
         var selector = template.toString().split("\n").map(setPath(streamerName)).join("\n");
         fs.writeFile(path, selector, giveExcutablePermissions(streamerName));
