@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-const file = require('./file');
-const streamer = require('./streamer');
-const login = require('./login');
+const file = require('./file/file');
+const streamer = require('./streamer/streamer');
+const login = require('./login/login');
 
 app.use(express.json());
 app.use(function(req, res, next) {

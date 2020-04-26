@@ -1,4 +1,4 @@
-var config = require('./config')
+var config = require('../config/config')
 var crypto = require('crypto');
 
 exports.getSHA256 = (input) => {

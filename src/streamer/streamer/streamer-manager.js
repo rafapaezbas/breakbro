@@ -1,4 +1,4 @@
-var config = require('./config');
+var config = require('../config/config');
 var fs = require('fs');
 const { spawn } = require('child_process');
 

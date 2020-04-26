@@ -1,6 +1,6 @@
 const mongoClient = require('mongodb').MongoClient;
-const config = require('./config');
-const encrytion = require('./encryption');
+const config = require('../config/config');
+const encrytion = require('../encryption/encryption');
 const { spawn } = require('child_process');
 const axios = require('axios');
 

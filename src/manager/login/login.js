@@ -1,6 +1,6 @@
-var encryption = require('./encryption');
-var config = require('./config');
-var streamerManager = require('./streamer-manager');
+var encryption = require('../encryption/encryption');
+var config = require('../config/config');
+var streamerManager = require('../streamer/streamer-manager');
 const jwt  = require('jsonwebtoken');
 
 exports.login = async (req, res) => {

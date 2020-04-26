@@ -1,7 +1,6 @@
 const streamerManager = require('./streamer-manager');
-const fileManager = require('./file-manager');
-const config = require('./config');
-const jwt = require('./jwt');
+const config = require('../config/config');
+const jwt = require('../jwt/jwt');
 
 exports.create = async (req, res) => {
     const streamer = reqToStreamer(req);

@@ -1,5 +1,5 @@
 const { spawn } = require('child_process');
-var config = require('./config');
+var config = require('../config/config');
 var move = require('mv');
 const { promisify } = require('util');
 var fs = require('fs');

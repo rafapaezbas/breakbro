@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const streamer = require('./streamer.js');
+const streamer = require('./streamer/streamer.js');
 
 app.use(express.json());
 app.use(function(req, res, next) {

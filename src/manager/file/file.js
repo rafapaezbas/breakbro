@@ -1,7 +1,7 @@
 const fileManager = require('./file-manager');
 const formidable = require('formidable');
-const config = require('./config');
-const jwt = require('./jwt');
+const config = require('../config/config');
+const jwt = require('../jwt/jwt');
 
 exports.create = function(req, res){
     const streamerName = jwt.validAuth(req);
