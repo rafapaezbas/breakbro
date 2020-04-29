@@ -75,11 +75,10 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"searchKey\":\"a\"}" h
 - Add "playing now" endpoint 5
 - Add delete streamer 5
 - Add stop streamer button 3
-- Add load balancing mechanism for streamers and master - Needs micro services
+- Add load balancing mechanism for streamers and master - Needs micro services DONE
 - Change index h1 for darker headers not selected DONE
 - Implement search on index DONE 
 - Implement random on index 4
-- Implement featured on index 4
 - Check if font can be combined for streamers info 5
 - Make bigger "password" and "user" on login and signup 5
 - Add description to signup 4
@@ -88,6 +87,7 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"searchKey\":\"a\"}" h
 - Change index page DONE
 - Change manage collection page 5
 - Create docker files 3 - Needs microservices
-- Split microservices 5
+- Split microservices DONE
 - Remove search of navbar DONE
+- Add init stream
 - create newman tests

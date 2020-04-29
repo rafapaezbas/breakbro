@@ -1,0 +1,27 @@
+############################################################
+# Dockerfile to run manager
+# Based on Ubuntu Image
+############################################################
+
+# Set the base image to use to Ubuntu
+FROM ubuntu
+
+# Update the default application repository sources list
+RUN apt-get update
+
+# Install node
+RUN apt-get install -y nodejs
+
+# Install npm
+RUN apt-get install -y npm
+
+#Install npm dependecies for infor service
+RUN cd /home/web && npm install
+
+#Copy info service code
+COPY ./src/manager/ /home/manager/
+
+#Expose manager port
+EXPOSE 80
+
+ENTRYPOINT node /home/web/index.js & /bin/bash

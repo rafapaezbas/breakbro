@@ -10,6 +10,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/streamer',streamer.create);
+app.get('/streamer/init',streamer.init);
 
 app.listen(38082, () => {
     console.log("Server started in port 38082");

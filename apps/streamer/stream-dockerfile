@@ -1,0 +1,22 @@
+############################################################
+# Dockerfile to ezstream
+# Based on Ubuntu Image
+############################################################
+
+# Set the base image to use to Ubuntu
+FROM ubuntu
+
+# Update the default application repository sources list
+RUN apt-get update
+
+# Install mp3info
+RUN apt-get install -y mp3info
+
+#Install ezstream
+RUN apt-get install -y ezstream
+
+#Copy ezstream configuration
+COPY ./src/streamer /home/streamer
+
+#Start icecast2, wait until is ready, run ezstream and info service, then run a bash console
+ENTRYPOINT /bin/bash

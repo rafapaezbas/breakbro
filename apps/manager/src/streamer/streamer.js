@@ -7,7 +7,7 @@ exports.create = async (req, res) => {
     if(!isValid(streamer) || await streamerManager.findByName(streamer.name) != undefined){ //If there are missing fields or streamer already exists.
         res.sendStatus(400);
     }else{
-        streamerManager.create(streamer).then(successfullRequest(res),failedRequest(res));
+        const call = streamerManager.create(streamer).then(successfullRequest(res),failedRequest(res));
     }
 };
 
@@ -47,14 +47,12 @@ const isValid = (streamer) => {
 
 const successfullRequest = (res) => {
     return (result) => {
-        console.log(result);
         res.sendStatus(200);
     };
 };
 
 const failedRequest = (res) => {
     return (result) => {
-        console.log(result);
         res.sendStatus(503);
     };
 };

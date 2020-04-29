@@ -2,6 +2,13 @@ var config = require('../config/config');
 var fs = require('fs');
 const { spawn } = require('child_process');
 
+
+exports.init = (streamerName) => {
+    const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
+    var subprocess = spawn("ezstream",["-c", path]);
+    console.log("PID:" + subprocess.pid);
+};
+
 exports.create = (streamerName) => {
         const path = config.get("streamers.path") + streamerName;
         fs.mkdir(path, createConfig(streamerName));

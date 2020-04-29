@@ -5,13 +5,18 @@ const { spawn } = require('child_process');
 const axios = require('axios');
 
 
+exports.init = async (streamerName) => {
+    const streamer = await findByName(streamerName);
+    return axios.get('http://' + streamer.node + '/streamer/init?name=' + streamer.name);
+};
+
 exports.create = async (streamer) => {
     const nodes = await dbConnection().then(getNodesByClients()).then(cursor => cursor.toArray());
     const streamerNode = sortByClients(nodes)[0];
     increaseNodeClients(streamerNode);
     const updatedStreamer = {name: streamer.name, node:streamerNode.url, password: encrytion.getSHA256(streamer.password), info: streamer.info};
     persistStreamer(updatedStreamer);
-    return axios.get(streamerNode.url + '/streamer?name=' + streamer.name);
+    return axios.get('http://' + streamerNode.url + '/streamer?name=' + streamer.name + '&master=' + streamerNode.master);
 };
 
 exports.findByName = (name) => {
@@ -28,11 +33,6 @@ exports.findBySearchKey = (searchKey) => {
     return dbConnection().then(get(query)).then(cursor => cursor.toArray());
 };
 
-exports.init = (streamerName) => {
-    const path = config.get("streamers.path") + streamerName + "/ezconfig.xml";
-    var subprocess = spawn("ezstream",["-c", path]);
-    console.log("PID:" + subprocess.pid);
-};
 
 const getNodesByClients = () => {
     return (client) => {
@@ -52,7 +52,7 @@ const persistStreamer = (streamer) => {
 const update = (collection,query,newValues) => {
     return (client) => {
         var db = client.db('breakbro');
-        db.collection(collection).updateOne(query,{$set: newValues}).then((result) => console.log(result));
+        db.collection(collection).updateOne(query,{$set: newValues});
     };
 };
 
