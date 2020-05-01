@@ -9,7 +9,7 @@ exports.moveFile = (streamerName) => {
         var fileName = files.filetoupload.name;
         var oldPath = files.filetoupload.path;
         var newPath = config.get("file.upload.path") + streamerName + "/music/" + fileName;
-        move(oldPath, newPath, log("Successfull upload: " + fileName));
+        move(oldPath, newPath, (res) =>  console.log("Successfull upload: " + fileName));
     };
 };
 

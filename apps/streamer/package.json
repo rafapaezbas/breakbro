@@ -1,0 +1,25 @@
+{
+  "name": "breakbro",
+  "version": "1.0.0",
+  "description": "Collection broadcasting for Icecast2 and Ezstream",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "icecast2",
+    "ezstream",
+    "broadcast"
+  ],
+  "author": "rpaezbas",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.5",
+    "mv": "^2.1.1",
+    "promisify": "0.0.3"
+  }
+}

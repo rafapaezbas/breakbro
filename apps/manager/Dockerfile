@@ -9,19 +9,20 @@ FROM ubuntu
 # Update the default application repository sources list
 RUN apt-get update
 
-# Install node
+#Needed for last node version
+RUN apt-get install -y wget
+
+# Install node and npm
+RUN wget -qO- https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
 
-# Install npm
-RUN apt-get install -y npm
+#Copy info service code
+COPY ./ /home/manager/
 
 #Install npm dependecies for infor service
-RUN cd /home/web && npm install
-
-#Copy info service code
-COPY ./src/manager/ /home/manager/
+RUN cd /home/manager && npm install
 
 #Expose manager port
-EXPOSE 80
+EXPOSE 38081
 
-ENTRYPOINT node /home/web/index.js & /bin/bash
+ENTRYPOINT node /home/manager/src/main.js & /bin/bash

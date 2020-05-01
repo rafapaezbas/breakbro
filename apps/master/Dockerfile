@@ -1,5 +1,5 @@
 ############################################################
-# Dockerfile to ezstream
+# Dockerfile to run icecast2
 # Based on Ubuntu Image
 ############################################################
 
@@ -9,14 +9,18 @@ FROM ubuntu
 # Update the default application repository sources list
 RUN apt-get update
 
-# Install mp3info
-RUN apt-get install -y mp3info
+# Install icecast2
+RUN apt-get install -y icecast2
 
-#Install ezstream
-RUN apt-get install -y ezstream
+#Copy icecast configuration
+COPY icecast-config/icecast.xml /etc/icecast2/icecast.xml
 
-#Copy ezstream configuration
-COPY ./src/streamer /home/streamer
+#Enable init.d
+COPY icecast-config/icecast2 /etc/default/icecast2
+
+#Expose icecast port
+EXPOSE 38080
 
 #Start icecast2, wait until is ready, run ezstream and info service, then run a bash console
-ENTRYPOINT /bin/bash
+ENTRYPOINT service icecast2 restart & /bin/bash
+

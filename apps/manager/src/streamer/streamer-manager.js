@@ -19,7 +19,9 @@ exports.create = async (streamer) => {
     return axios.get('http://' + streamerNode.url + '/streamer?name=' + streamer.name + '&master=' + streamerNode.master);
 };
 
-exports.findByName = (name) => {
+exports.findByName = findByName;
+
+const findByName = (name) => {
     return dbConnection().then(getOne({name: name}));
 };
 
